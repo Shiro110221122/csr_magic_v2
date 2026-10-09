@@ -4,6 +4,7 @@ import ErrorBoundary from './components/ErrorBoundary';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import PrivateRoute from './components/PrivateRoute';
+import PublicOnlyRoute from './components/PublicOnlyRoute';
 import AdminLayout from './components/AdminLayout';
 import EmployeeLayout from './components/EmployeeLayout';
 import EventManagementPage from './pages/admin/EventManagementPage';
@@ -33,9 +34,11 @@ export default function App() {
   return (
     <ErrorBoundary>
       <Routes>
-        {/* 公开路由 */}
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/register" element={<RegisterPage />} />
+        {/* 公开路由（已登录用户被重定向首页） */}
+        <Route element={<PublicOnlyRoute />}>
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/register" element={<RegisterPage />} />
+        </Route>
 
         {/* 受保护路由 */}
         <Route element={<PrivateRoute />}>
