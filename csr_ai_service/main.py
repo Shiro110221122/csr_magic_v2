@@ -9,6 +9,7 @@ from pathlib import Path
 from config import PORT, POSTER_STORAGE_DIR, CORS_ORIGINS
 from app.api.poster import router as poster_router
 from app.api.survey import router as survey_router
+from app.api.chat import router as chat_router
 
 logging.basicConfig(
     level=logging.INFO,
@@ -36,6 +37,7 @@ app.mount("/static", StaticFiles(directory="static"), name="static")
 # 注册路由
 app.include_router(poster_router, prefix="/poster", tags=["海报生成"])
 app.include_router(survey_router, prefix="/survey", tags=["问卷生成"])
+app.include_router(chat_router, prefix="/chat", tags=["AI 对话报名"])
 
 
 @app.get("/health")

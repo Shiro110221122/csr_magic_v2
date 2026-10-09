@@ -4,7 +4,6 @@ import ErrorBoundary from './components/ErrorBoundary';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import PrivateRoute from './components/PrivateRoute';
-import PublicOnlyRoute from './components/PublicOnlyRoute';
 import AdminLayout from './components/AdminLayout';
 import EmployeeLayout from './components/EmployeeLayout';
 import EventManagementPage from './pages/admin/EventManagementPage';
@@ -21,6 +20,7 @@ import HomePage from './pages/HomePage';
 import MyProfilePage from './pages/MyProfilePage';
 import NotificationListPage from './pages/NotificationListPage';
 import AIPosterStudioPage from './pages/AIPosterStudioPage';
+import ChatRegistrationPage from './pages/ChatRegistrationPage';
 import { useAuthStore } from './stores/authStore';
 
 export default function App() {
@@ -33,11 +33,9 @@ export default function App() {
   return (
     <ErrorBoundary>
       <Routes>
-        {/* 公开路由（已登录用户被重定向首页） */}
-        <Route element={<PublicOnlyRoute />}>
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/register" element={<RegisterPage />} />
-        </Route>
+        {/* 公开路由 */}
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/register" element={<RegisterPage />} />
 
         {/* 受保护路由 */}
         <Route element={<PrivateRoute />}>
@@ -46,6 +44,7 @@ export default function App() {
             <Route path="/" element={<HomePage />} />
             <Route path="/activities" element={<ActivityListPage />} />
             <Route path="/activities/:id" element={<ActivityDetailPage />} />
+            <Route path="/activities/:id/chat" element={<ChatRegistrationPage />} />
             <Route path="/my-surveys" element={<MySurveysPage />} />
           <Route path="/surveys/:id" element={<SurveyFillPage />} />
           <Route path="/notifications" element={<NotificationListPage />} />
