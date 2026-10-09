@@ -77,7 +77,8 @@ export default function EmployeeLayout() {
               <NotificationBell />
               <div className="w-9 h-9 rounded-full bg-gradient-to-tr from-[#2EB87A] to-[#FFB347] p-[2px]">
                 <div className="w-full h-full rounded-full bg-white flex items-center justify-center text-sm font-bold text-[#2EB87A]">
-                  {getAvatarInitial(user?.displayName) || getAvatarInitial(user?.username)}                </div>
+                  {getAvatarInitial(user?.displayName) || getAvatarInitial(user?.username)}
+                </div>
               </div>
               <button
                 type="button"
